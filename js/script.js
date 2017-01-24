@@ -1,21 +1,26 @@
 // unicode dice
 var dice = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;' ];
 
-function draw(states) {
+function draw(state) {
   var die1 = document.getElementById("die1");
   var die2 = document.getElementById("die2");
   
   var pair = [die1, die2];
   
   pair.map(hide);
- 
-  die1.innerHTML = dice[states[0]];
-  die2.innerHTML = dice[states[1]];
+
+    var latest = state[0];
+    var result = latest.dice;
+    
+  die1.innerHTML = dice[result[0]-1];
+    die2.innerHTML = dice[result[1]-1];
+
   
   pair.map(show);
-  
-  var lion = document.getElementById("lion");
-  move(lion);
+
+    
+    var animal = document.getElementById(latest.animal);
+    move(animal);
 }
 
 function hide(e){
@@ -29,13 +34,13 @@ function show(e){
 function move(e) {
   var current = currentLeftMargin(e);
   
-  setTimeout(function(){lion.className += " animal-highlight"}, 1000);
-  setTimeout(function(){lion.style.marginLeft = (current + 30) + "px"}, 1500);
-  setTimeout(function(){lion.style.marginLeft = (current + 35) + "px"}, 1550);
-  setTimeout(function(){lion.style.marginLeft = (current + 40) + "px"}, 1600);
-  setTimeout(function(){lion.style.marginLeft = (current + 45) + "px"}, 1650);
-  setTimeout(function(){lion.style.marginLeft = (current + 50) + "px"}, 1700);
-  setTimeout(function(){lion.classList.remove("animal-highlight")}, 1900);
+    setTimeout(function(){e.className += " animal-highlight"}, 1000);
+  setTimeout(function(){e.style.marginLeft = (current + 30) + "px"}, 1500);
+  setTimeout(function(){e.style.marginLeft = (current + 35) + "px"}, 1550);
+  setTimeout(function(){e.style.marginLeft = (current + 40) + "px"}, 1600);
+  setTimeout(function(){e.style.marginLeft = (current + 45) + "px"}, 1650);
+  setTimeout(function(){e.style.marginLeft = (current + 50) + "px"}, 1700);
+  setTimeout(function(){e.classList.remove("animal-highlight")}, 1900);
 }
 
 function currentLeftMargin(e){
