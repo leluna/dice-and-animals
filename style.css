@@ -49,6 +49,12 @@ button:focus {
   outline:0;
 }
 
+button:disabled{
+  background-color: #6a9f95;
+  box-shadow: 0 2px #666;
+  transform: translateY(3px);
+}
+
 .container {
   width: 500px;
   margin: auto;

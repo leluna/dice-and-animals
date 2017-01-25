@@ -1,7 +1,7 @@
 // unicode dice
 var dice = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;' ];
 
-function draw(state) {
+function draw(state) {  
   var die1 = document.getElementById("die1");
   var die2 = document.getElementById("die2");
   
@@ -32,6 +32,7 @@ function show(e){
 }
 
 function move(e) {
+  disableButton(900);
   var current = currentLeftMargin(e);
   
   var width = e.offsetWidth;
@@ -51,4 +52,11 @@ function move(e) {
 function currentLeftMargin(e){
   var cstyle = window.getComputedStyle(e).marginLeft;	
   return parseInt(cstyle);
+}
+
+function disableButton(end){
+  var button = document.getElementById("roll-button");
+  
+  button.disabled = true;
+  setTimeout(function(){button.disabled = false}, end);
 }
