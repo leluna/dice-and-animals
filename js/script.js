@@ -1,4 +1,4 @@
-// unicode dice
+	// unicode dice
 var dice = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;' ];
 
 function draw(state) {  
@@ -9,8 +9,8 @@ function draw(state) {
   
   pair.map(hide);
 
-  var latest = state[0];
-  var result = latest.dice;
+  var latestState = state[0];
+  var result = latestState.dice;
     
   die1.innerHTML = dice[result[0]-1];
   die2.innerHTML = dice[result[1]-1];
@@ -19,8 +19,10 @@ function draw(state) {
   pair.map(show);
 
     
-  var animal = document.getElementById(latest.animal);
+  var animal = document.getElementById(latestState.animal);
   move(animal);
+
+  console.log(win(animal));
 }
 
 function hide(e){
@@ -36,8 +38,8 @@ function move(e) {
   var current = currentLeftMargin(e);
   
   var width = e.offsetWidth;
-  var firststep = 30;
-  var steplength = (width - firststep)/4;
+  var firststep = 0.6*width;
+  var steplength = 0.1*width;
   
   setTimeout(function(){e.className += " animal-highlight"}, 400);
   setTimeout(function(){e.style.marginLeft = (current + firststep) + "px"}, 500);
@@ -59,4 +61,12 @@ function disableButton(end){
   
   button.disabled = true;
   setTimeout(function(){button.disabled = false}, end);
+}
+
+function win(animal){
+  var lane = document.getElementsByClassName("lane")[0];
+  var lanestyle = window.getComputedStyle(lane)
+  var lanewidth = parseInt(lanestyle.getPropertyValue("width"));
+  var lanePaddingLeft = parseInt(lanestyle.getPropertyValue("padding-left"));
+  return (currentLeftMargin(animal) + 2*animal.offsetWidth + lanePaddingLeft > lanewidth)
 }
