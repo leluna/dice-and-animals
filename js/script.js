@@ -1,6 +1,11 @@
 	// unicode dice
 var dice = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;' ];
 
+function refresh(){
+  //temporary until initial state is property set?
+  location.reload();
+}
+
 function draw(state) {  
   var die1 = document.getElementById("die1");
   var die2 = document.getElementById("die2");
@@ -22,7 +27,9 @@ function draw(state) {
   var animal = document.getElementById(latestState.animal);
   move(animal);
 
-  console.log(win(animal));
+  if(win(animal)){
+    showWin(animal, latestState.animal);
+  }
 }
 
 function hide(e){
@@ -34,7 +41,7 @@ function show(e){
 }
 
 function move(e) {
-  disableButton(900);
+  disableRollButton(900);
   var current = currentLeftMargin(e);
   
   var width = e.offsetWidth;
@@ -56,11 +63,11 @@ function currentLeftMargin(e){
   return parseInt(cstyle);
 }
 
-function disableButton(end){
+function disableRollButton(timeout){
   var button = document.getElementById("roll-button");
   
   button.disabled = true;
-  setTimeout(function(){button.disabled = false}, end);
+  setTimeout(function(){button.disabled = false}, timeout);
 }
 
 function win(animal){
@@ -69,4 +76,17 @@ function win(animal){
   var lanewidth = parseInt(lanestyle.getPropertyValue("width"));
   var lanePaddingLeft = parseInt(lanestyle.getPropertyValue("padding-left"));
   return (currentLeftMargin(animal) + 2*animal.offsetWidth + lanePaddingLeft > lanewidth)
+}
+
+function showWin(animal, animalname){
+  disableRollButton(0);
+  console.log("win");
+  
+  document.getElementById("roll-button").style.display = "none";
+  document.getElementById("replay-button").style.display = "inline";
+  
+  animal.parentElement.style.backgroundColor = "#1abc9c";
+
+  // one way hack... wrap div in a outputpanel div and toggle display instead
+  document.getElementById("dies").innerHTML = animalname + " won!";
 }

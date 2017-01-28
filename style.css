@@ -55,6 +55,13 @@ button:disabled{
   transform: translateY(3px);
 }
 
+#replay-button {
+  background-color: #fff;
+  color: #1abc9c;
+  border: 2px solid #1abc9c;
+  display: none;
+}
+
 .container {
   width: 500px;
   margin: auto;
@@ -78,15 +85,17 @@ button:disabled{
   transform: translateY(-3px);
 }
 
-.dies {
+#dies {
   width: 145px;
   height: 60px;
   padding-top: 30px;
   padding-bottom: 20px;
   margin: auto;
+  text-align: center;
+  font-weight: 600;
 }
 
-.dies span{
+#dies span{
   width: 60px;
   height: 60px;
   display: inline-block;
@@ -95,7 +104,6 @@ button:disabled{
   font-size: 60px;
   line-height: 1;
   color: #333;
-  text-align: center;
 }
 
 .controller {
@@ -114,6 +122,10 @@ button:disabled{
   border-left: 3px solid #826709;
   border-right: 6px solid #333;
   padding-left: 3px;
+}
+
+.winlane {
+  background-color: #1abc9c;
 }
 
 .footer {
