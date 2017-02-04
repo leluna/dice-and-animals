@@ -16,7 +16,7 @@
 (defonce state (atom (list {:sheet  {:crocodile 0 :elephant 0 :lion 0}
                             :animal :lion
                             :dice   [1 1]})))
-
+							
 (defn mark [states dice animal]
   (let [next-sheet (update (:sheet (first states)) animal inc)
         next-state {:sheet next-sheet :dice dice :animal animal}]

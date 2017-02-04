@@ -27,8 +27,8 @@ function draw(state) {
   var animal = document.getElementById(latestState.animal);
   move(animal);
 
-  if(win(animal)){
-    showWin(animal, latestState.animal);
+  if(hasWon(animal)){
+    showWin(animal, capitalize(dict.translate(latestState.animal)));
   }
 }
 
@@ -70,7 +70,7 @@ function disableRollButton(timeout){
   setTimeout(function(){button.disabled = false}, timeout);
 }
 
-function win(animal){
+function hasWon(animal){
   var lane = document.getElementsByClassName("lane")[0];
   var lanestyle = window.getComputedStyle(lane)
   var lanewidth = parseInt(lanestyle.getPropertyValue("width"));
@@ -87,6 +87,22 @@ function showWin(animal, animalname){
   
   animal.parentElement.style.backgroundColor = "#1abc9c";
 
-  // one way hack... wrap div in a outputpanel div and toggle display instead
-  document.getElementById("dies").innerHTML = animalname + " won!";
+  var winMessageSpan = document.createElement('span')
+  winMessageSpan.innerHTML = animalname + " hat gewonnen!";
+  document.getElementById("dies").innerHTML = winMessageSpan.innerHTML;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function capitalize(str){
+    return str.charAt(0).toUpperCase() + str.substring(1);
 }

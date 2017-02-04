@@ -1,0 +1,1 @@
+{"version":3,"file":"\/C:\/Users\/hjiang\/github\/dice-and-animals\/js\/clj\/out\/dict.js","sources":["dict.cljs"],"lineCount":10,"mappings":";AAAA;;AAEA,AAACA;AAED,iBAAA,2CAAA,YAAA,eAAA,OAAA,gBAAA,WAAA,zHAAKC;AAIL,iBAAA,jBAAMC,0CAAWC;AAAjB,AAAoB,OAACF,yBAAUE","names":["cljs.core\/enable-console-print!","dict\/animal-de","dict\/translate","a"]}

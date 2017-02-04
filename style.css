@@ -86,8 +86,8 @@ button:disabled{
 }
 
 #dies {
-  width: 145px;
   height: 60px;
+  line-height: 60px;
   padding-top: 30px;
   padding-bottom: 20px;
   margin: auto;
